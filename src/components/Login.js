@@ -1,16 +1,25 @@
 import { useRef, useState } from "react"
 import Header from "./Header"
 import { checkValidData } from "../utils/validate"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
 
 const Login = () => {
+
 
     const [isSignInForm, setIsSignInForm] = useState(true)
 
     const [errorMessage, setErrorMessage] = useState(null)
 
+    const navigate = useNavigate()
+
 
 
     //it will create a reference
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
@@ -22,9 +31,57 @@ const Login = () => {
         const message = checkValidData(email.current.value, password.current.value)
         setErrorMessage(message)
 
+        if (message) return;
+        //Create a new User 
 
+        // Sign In Sign up LOgic 
+        //Sign Up Logic
+        if (!isSignInForm) {
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
 
+                    return updateProfile(user, {
+                        displayName: name.current?.value,
+                        photoURL: "https://example.com/jane-q-user/profile.jpg"
+                    }).then(() => {
+                        // Profile updated!
+                        // ...
+                        navigate("/browse")
+                    }).catch((error) => {
+                        // An error occurred
+                        // ...
+                        setErrorMessage(errorMessage)
+                    });
 
+                    console.log(user);
+                    navigate("/browse")
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrorMessage(errorCode + "-" + errorMessage);
+                    // ..
+                });
+        }
+        else {
+            // Sign in Logic 
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log(user, "Sign in Successfull")
+                    navigate("/browse")
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrorMessage(errorMessage)
+                });
+        }
     }
 
     const toggleSignInForm = () => {
@@ -39,7 +96,7 @@ const Login = () => {
             </div>
 
             <form
-                onSubmit={(e) => e.preventDefault}
+                onSubmit={(e) => e.preventDefault()}
 
                 className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80 rounded-md ">
 

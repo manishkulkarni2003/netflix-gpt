@@ -7,6 +7,11 @@
 -Signup form
 -Form Validation
 -UseRef Hook
+-Firebase Setup
+-Deployed our app to production 
+-Create Signup User account (backend used as firebase)
+-Create Login User account (backend used as firebase)
+-Created appStore redux with UserSlice
 
 # Features
 # If Logged in 
