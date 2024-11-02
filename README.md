@@ -2,8 +2,11 @@
 -Created React app
 -We have configured tailwind css
 -Header
+-routing
 -Login form 
 -Signup form
+-Form Validation
+-UseRef Hook
 
 # Features
 # If Logged in 
