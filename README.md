@@ -1,6 +1,9 @@
 # NetFlix gpt
 -Created React app
 -We have configured tailwind css
+-Header
+-Login form 
+-Signup form
 
 # Features
 # If Logged in 
