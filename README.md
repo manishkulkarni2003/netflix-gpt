@@ -12,6 +12,20 @@
 -Create Signup User account (backend used as firebase)
 -Create Login User account (backend used as firebase)
 -Created appStore redux with UserSlice
+-Bug fix of signup user and displayname 
+-Redirect user using the params /browse 
+-Unsubscribed the onAuthstateChanged callback
+-Added to constants 
+-Registered Tmdb Api and successfuly fetched tmdb Api
+-Created Custom hooks 
+-Separation of concern done 
+-updated store with movies data 
+-fetched data for trailer video 
+-updated Store With Trailer Video data 
+-Embeded The Youtube video
+-displaying the video on the browse 
+-added Tailwind classes 
+
 
 # Features
 # If Logged in 

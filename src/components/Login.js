@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
 
@@ -16,7 +17,7 @@ const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState(null)
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const dispatch = useDispatch()
 
 
@@ -46,7 +47,7 @@ const Login = () => {
 
                     return updateProfile(user, {
                         displayName: name.current?.value,
-                        photoURL: "https://example.com/jane-q-user/profile.jpg"
+                        photoURL: USER_AVATAR
                     }).then(() => {
                         // Profile updated!
                         // ...
@@ -60,7 +61,7 @@ const Login = () => {
                             })
                         )
 
-                        navigate("/browse")
+
                     }).catch((error) => {
                         // An error occurred
                         // ...
@@ -68,7 +69,7 @@ const Login = () => {
                     });
 
                     console.log(user);
-                    navigate("/browse")
+
 
                 })
                 .catch((error) => {
@@ -85,7 +86,7 @@ const Login = () => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log(user, "Sign in Successfull")
-                    navigate("/browse")
+
                     // ...
                 })
                 .catch((error) => {
