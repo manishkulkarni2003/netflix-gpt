@@ -6,6 +6,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
 
@@ -15,7 +17,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState(null)
 
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
 
 
     //it will create a reference
@@ -48,6 +50,16 @@ const Login = () => {
                     }).then(() => {
                         // Profile updated!
                         // ...
+                        const { uid, email, displayname, photoURL } = auth.currentUser;
+                        dispatch(
+                            addUser({
+                                uid: uid,
+                                email: email,
+                                displayname: displayname,
+                                photoURL: photoURL
+                            })
+                        )
+
                         navigate("/browse")
                     }).catch((error) => {
                         // An error occurred

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
     const navigate = useNavigate();
-    const user = useSelector(store => store.user)
+    const user = useSelector((store) => store.user)
     const handleSignout = () => {
         signOut(auth).then(() => {
             navigate("/")
