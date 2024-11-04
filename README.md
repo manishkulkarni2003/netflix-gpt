@@ -25,6 +25,12 @@
 -Embeded The Youtube video
 -displaying the video on the browse 
 -added Tailwind classes 
+-Created Now Playing Top Rated and Upcoming Cards 
+-GPT Search Feature 
+-created gpt search page
+-created gpt search bar 
+-added multilangauge feature in gpt search
+
 
 
 
