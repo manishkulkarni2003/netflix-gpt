@@ -30,6 +30,9 @@
 -created gpt search page
 -created gpt search bar 
 -added multilangauge feature in gpt search
+-added gpt search result page
+-added memoization
+-Modified all the errors
 
 
 
