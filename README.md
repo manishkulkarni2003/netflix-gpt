@@ -31,8 +31,13 @@
 -created gpt search bar 
 -added multilangauge feature in gpt search
 -added gpt search result page
+-Fetched Gpt Movie Suggestions
+-Gpt Slice
+-Reused Movie List Component 
 -added memoization
 -Modified all the errors
+-Made Website responsive
+-Added .env File
 
 
 
